@@ -10,6 +10,10 @@ Cool little tweaks I think are pretty neat
   - Change the result text based on whether you passed or failed a level
   - Change the colour of the result tab based on whether you passed or failed a level
 
+### Coming Soon
+  - Disable the bloqs within the main menu
+  - Song Title adjustment when using Expand Cover Image
+
 ## Credits
 
 * [zoller27osu](https://github.com/zoller27osu), [Sc2ad](https://github.com/Sc2ad) and [jakibaki](https://github.com/jakibaki) - [beatsaber-hook](https://github.com/sc2ad/beatsaber-hook)
