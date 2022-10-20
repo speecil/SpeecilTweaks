@@ -145,5 +145,6 @@ void load() {
   QuestUI::Register::RegisterMainMenuModSettingsViewController(modInfo, DidActivate);
   getLogger().info("Installing hooks...");
   INSTALL_HOOK(getLogger(), ResultsView);
+  INSTALL_HOOK(getLogger(), LevelUIHook);
   getLogger().info("Installed all hooks!");
 }
