@@ -1,0 +1,3 @@
+C:/Users/riley/Desktop/SpeecilTweaks/build/CMakeFiles/SpeecilTweaks.dir
+C:/Users/riley/Desktop/SpeecilTweaks/build/CMakeFiles/edit_cache.dir
+C:/Users/riley/Desktop/SpeecilTweaks/build/CMakeFiles/rebuild_cache.dir

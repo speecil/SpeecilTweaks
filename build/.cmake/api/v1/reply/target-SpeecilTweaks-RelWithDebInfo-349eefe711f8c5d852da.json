@@ -1,0 +1,436 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "libSpeecilTweaks.so"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_link_directories",
+			"include",
+			"target_link_libraries",
+			"add_compile_options",
+			"add_compile_definitions",
+			"target_include_directories",
+			"target_sources"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt",
+			"extern.cmake"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 40,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 60,
+				"parent" : 0
+			},
+			{
+				"file" : 1,
+				"parent" : 2
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 14,
+				"parent" : 3
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 58,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 20,
+				"parent" : 3
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 29,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 30,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 33,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 32,
+				"parent" : 0
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 47,
+				"parent" : 0
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 50,
+				"parent" : 0
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 52,
+				"parent" : 0
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 54,
+				"parent" : 0
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 56,
+				"parent" : 0
+			},
+			{
+				"command" : 6,
+				"file" : 1,
+				"line" : 3,
+				"parent" : 3
+			},
+			{
+				"command" : 6,
+				"file" : 1,
+				"line" : 4,
+				"parent" : 3
+			},
+			{
+				"command" : 6,
+				"file" : 1,
+				"line" : 11,
+				"parent" : 3
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 9,
+				"parent" : 3
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 10,
+				"parent" : 3
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -fexceptions -frtti -stdlib=libc++ -O2 -g -DNDEBUG -fPIC"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-frtti"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-fexceptions"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-O3"
+				},
+				{
+					"fragment" : "-std=gnu++20"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 9,
+					"define" : "MOD_ID=\"SpeecilTweaks\""
+				},
+				{
+					"define" : "SpeecilTweaks_EXPORTS"
+				},
+				{
+					"backtrace" : 10,
+					"define" : "VERSION=\"0.1.0\""
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 11,
+					"path" : "C:/Users/riley/Desktop/SpeecilTweaks/."
+				},
+				{
+					"backtrace" : 12,
+					"path" : "C:/Users/riley/Desktop/SpeecilTweaks/src"
+				},
+				{
+					"backtrace" : 13,
+					"path" : "C:/Users/riley/Desktop/SpeecilTweaks/include"
+				},
+				{
+					"backtrace" : 14,
+					"path" : "C:/Users/riley/Desktop/SpeecilTweaks/shared"
+				},
+				{
+					"backtrace" : 15,
+					"path" : "C:/Users/riley/Desktop/SpeecilTweaks/extern/includes/codegen/include"
+				},
+				{
+					"backtrace" : 16,
+					"path" : "C:/Users/riley/Desktop/SpeecilTweaks/extern/includes"
+				},
+				{
+					"backtrace" : 17,
+					"isSystem" : true,
+					"path" : "C:/Users/riley/Desktop/SpeecilTweaks/extern/includes/libil2cpp/il2cpp/libil2cpp"
+				},
+				{
+					"backtrace" : 18,
+					"isSystem" : true,
+					"path" : "C:/Users/riley/Desktop/SpeecilTweaks/extern/includes/questui/shared/cppcodec"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "20"
+			},
+			"sourceIndexes" : 
+			[
+				0,
+				3
+			],
+			"sysroot" : 
+			{
+				"path" : "C:/Program Files/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot"
+			}
+		},
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -fexceptions -O2 -g -DNDEBUG -fPIC"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-frtti"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-fexceptions"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-O3"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 9,
+					"define" : "MOD_ID=\"SpeecilTweaks\""
+				},
+				{
+					"define" : "SpeecilTweaks_EXPORTS"
+				},
+				{
+					"backtrace" : 10,
+					"define" : "VERSION=\"0.1.0\""
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 11,
+					"path" : "C:/Users/riley/Desktop/SpeecilTweaks/."
+				},
+				{
+					"backtrace" : 12,
+					"path" : "C:/Users/riley/Desktop/SpeecilTweaks/src"
+				},
+				{
+					"backtrace" : 13,
+					"path" : "C:/Users/riley/Desktop/SpeecilTweaks/include"
+				},
+				{
+					"backtrace" : 14,
+					"path" : "C:/Users/riley/Desktop/SpeecilTweaks/shared"
+				},
+				{
+					"backtrace" : 15,
+					"path" : "C:/Users/riley/Desktop/SpeecilTweaks/extern/includes/codegen/include"
+				},
+				{
+					"backtrace" : 16,
+					"path" : "C:/Users/riley/Desktop/SpeecilTweaks/extern/includes"
+				},
+				{
+					"backtrace" : 17,
+					"isSystem" : true,
+					"path" : "C:/Users/riley/Desktop/SpeecilTweaks/extern/includes/libil2cpp/il2cpp/libil2cpp"
+				},
+				{
+					"backtrace" : 18,
+					"isSystem" : true,
+					"path" : "C:/Users/riley/Desktop/SpeecilTweaks/extern/includes/questui/shared/cppcodec"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				1,
+				2
+			],
+			"sysroot" : 
+			{
+				"path" : "C:/Program Files/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot"
+			}
+		}
+	],
+	"id" : "SpeecilTweaks::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-Wl,--build-id=sha1 -Wl,--no-rosegment -Wl,--fatal-warnings -Wl,--gc-sections -Qunused-arguments -Wl,--no-undefined",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-LC:\\Users\\riley\\Desktop\\SpeecilTweaks\\extern\\libs",
+				"role" : "libraryPath"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "-llog",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "C:\\Users\\riley\\Desktop\\SpeecilTweaks\\extern\\libs\\libbeatsaber-hook_3_14_0.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "C:\\Users\\riley\\Desktop\\SpeecilTweaks\\extern\\libs\\libbs-utils.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "C:\\Users\\riley\\Desktop\\SpeecilTweaks\\extern\\libs\\libcodegen.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "C:\\Users\\riley\\Desktop\\SpeecilTweaks\\extern\\libs\\libcustom-types.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "C:\\Users\\riley\\Desktop\\SpeecilTweaks\\extern\\libs\\libmodloader.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "C:\\Users\\riley\\Desktop\\SpeecilTweaks\\extern\\libs\\libquestui.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-static-libstdc++ -latomic -lm",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX",
+		"sysroot" : 
+		{
+			"path" : "C:/Program Files/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot"
+		}
+	},
+	"name" : "SpeecilTweaks",
+	"nameOnDisk" : "libSpeecilTweaks.so",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/main.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 19,
+			"compileGroupIndex" : 1,
+			"path" : "extern/includes/beatsaber-hook/src/inline-hook/inlineHook.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 19,
+			"compileGroupIndex" : 1,
+			"path" : "extern/includes/beatsaber-hook/src/inline-hook/relocate.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 20,
+			"compileGroupIndex" : 0,
+			"path" : "extern/includes/beatsaber-hook/src/inline-hook/And64InlineHook.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "SHARED_LIBRARY"
+}

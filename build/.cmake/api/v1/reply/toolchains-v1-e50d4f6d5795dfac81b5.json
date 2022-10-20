@@ -1,0 +1,109 @@
+{
+	"kind" : "toolchains",
+	"toolchains" : 
+	[
+		{
+			"compiler" : 
+			{
+				"id" : "Clang",
+				"implicit" : 
+				{
+					"includeDirectories" : 
+					[
+						"C:/Program Files/NDK/toolchains/llvm/prebuilt/windows-x86_64/lib64/clang/14.0.6/include",
+						"C:/Program Files/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/local/include",
+						"C:/Program Files/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/aarch64-linux-android",
+						"C:/Program Files/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include"
+					],
+					"linkDirectories" : 
+					[
+						"C:/Program Files/NDK/toolchains/llvm/prebuilt/windows-x86_64/lib64/clang/14.0.6/lib/linux/aarch64",
+						"C:/Program Files/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/aarch64-linux-android/24",
+						"C:/Program Files/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/aarch64-linux-android",
+						"C:/Program Files/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib"
+					],
+					"linkFrameworkDirectories" : [],
+					"linkLibraries" : 
+					[
+						"atomic",
+						"m",
+						"-l:libunwind.a",
+						"dl",
+						"c",
+						"-l:libunwind.a",
+						"dl"
+					]
+				},
+				"path" : "C:/Program Files/NDK/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe",
+				"target" : "aarch64-none-linux-android24",
+				"version" : "14.0.6"
+			},
+			"language" : "C",
+			"sourceFileExtensions" : 
+			[
+				"c",
+				"m"
+			]
+		},
+		{
+			"compiler" : 
+			{
+				"id" : "Clang",
+				"implicit" : 
+				{
+					"includeDirectories" : 
+					[
+						"C:/Program Files/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/c++/v1",
+						"C:/Program Files/NDK/toolchains/llvm/prebuilt/windows-x86_64/lib64/clang/14.0.6/include",
+						"C:/Program Files/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/local/include",
+						"C:/Program Files/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/aarch64-linux-android",
+						"C:/Program Files/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include"
+					],
+					"linkDirectories" : 
+					[
+						"C:/Program Files/NDK/toolchains/llvm/prebuilt/windows-x86_64/lib64/clang/14.0.6/lib/linux/aarch64",
+						"C:/Program Files/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/aarch64-linux-android/24",
+						"C:/Program Files/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib/aarch64-linux-android",
+						"C:/Program Files/NDK/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/lib"
+					],
+					"linkFrameworkDirectories" : [],
+					"linkLibraries" : 
+					[
+						"atomic",
+						"m",
+						"c++",
+						"m",
+						"-l:libunwind.a",
+						"dl",
+						"c",
+						"-l:libunwind.a",
+						"dl"
+					]
+				},
+				"path" : "C:/Program Files/NDK/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe",
+				"target" : "aarch64-none-linux-android24",
+				"version" : "14.0.6"
+			},
+			"language" : "CXX",
+			"sourceFileExtensions" : 
+			[
+				"C",
+				"M",
+				"c++",
+				"cc",
+				"cpp",
+				"cxx",
+				"mm",
+				"mpp",
+				"CPP",
+				"ixx",
+				"cppm"
+			]
+		}
+	],
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 0
+	}
+}
