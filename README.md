@@ -1,6 +1,14 @@
 # Speecil Tweaks
 
-Cool little tweaks i think are pretty cool
+Cool little tweaks I think are pretty neat
+
+### Play and Practice Button Editor
+  - Enable and disable each button (no need for NoPlay)
+  - Change the text for each button (like PressJtoPlay but speecil)
+ 
+### Results Screen Editor
+  - Change the result text based on whether you passed or failed a level
+  - Change the colour of the result tab based on whether you passed or failed a level
 
 ## Credits
 
