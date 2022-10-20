@@ -5,8 +5,8 @@
 DECLARE_CONFIG(MainConfig,
     CONFIG_VALUE(rText, std::string, "Pass Results Text", "Well Done!");
     CONFIG_VALUE(rfText, std::string, "Fail Results Text", "You Suck.");
-    CONFIG_VALUE(rBackColour, UnityEngine::Color, "Colour", UnityEngine::Color(0.15, 0.15, 0.7, 1.0));
-    CONFIG_VALUE(rfBackColour, UnityEngine::Color, "Colour", UnityEngine::Color(1.0, 0.0, 0.0, 1.0));
+    CONFIG_VALUE(rBackColour, UnityEngine::Color, "Pass Colour", UnityEngine::Color(0.15, 0.15, 0.7, 1.0));
+    CONFIG_VALUE(rfBackColour, UnityEngine::Color, "Fail Colour", UnityEngine::Color(1.0, 0.0, 0.0, 1.0));
     CONFIG_VALUE(EnablePlayButton, bool, "Enable the Play Button", true);
     CONFIG_VALUE(aText, std::string, "Play Button Text", "Speecil!");
     CONFIG_VALUE(EnablePracticeButton, bool, "Enable the Practice Button", true);
