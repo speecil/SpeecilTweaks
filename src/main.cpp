@@ -53,48 +53,55 @@ void DidActivate(HMUI::ViewController * self, bool firstActivation, bool addedTo
     TMPro::TextMeshProUGUI * text1;
     TMPro::TextMeshProUGUI * text2;
     TMPro::TextMeshProUGUI * text3;
-    // creates a toggle for the mod
-    CreateToggle(container -> get_transform(), "Enable Speecil Tweaks", getMainConfig().isEnabled.GetValue(), [](bool value) {
-      getMainConfig().isEnabled.SetValue(value);
-      getLogger().info("Toggled speecil tweaks Mod");
-
-    });
-    // Splits the UI to seperate mod toggle and the editing of text
-    QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "_______________________________________________");
+    TMPro::TextMeshProUGUI * text4;
+    TMPro::TextMeshProUGUI * text5;
+    TMPro::TextMeshProUGUI * text6;
     // Creates a keyboard and sets the input to pauseText
     text2 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "Results Screen Editor");
     text2 -> set_alignment(TMPro::TextAlignmentOptions::Center);
+    text1 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "Pass Result");
     BeatSaberUI::CreateStringSetting(container -> get_transform(), StringW(getMainConfig().rText.GetName()), StringW(getMainConfig().rText.GetValue()), [](std::string rtext) {
       getMainConfig().rText.SetValue(rtext);
     });
-    auto rBackColorPicker = BeatSaberUI::CreateColorPicker(container -> get_transform(), "Results Background Colour", getMainConfig().rBackColour.GetValue(), [](UnityEngine::Color color) {
+    auto rBackColorPicker = BeatSaberUI::CreateColorPicker(container -> get_transform(), "Pass Result Background Colour", getMainConfig().rBackColour.GetValue(), [](UnityEngine::Color color) {
       getMainConfig().rBackColour.SetValue(color, true);
     });
     QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "_______________________________________________");
     text3 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "Play Button Editor");
     text3 -> set_alignment(TMPro::TextAlignmentOptions::Center);
-    CreateToggle(container -> get_transform(), "Enable the play button", getMainConfig().isEnabled.GetValue(), [](bool value) {
+    CreateToggle(container -> get_transform(), "Enable the play button", getMainConfig().EnablePlayButton.GetValue(), [](bool value) {
       getMainConfig().EnablePlayButton.SetValue(value);
-      getLogger().info("Toggled speecil tweaks Mod");
+      getLogger().info("Toggled play button");
 
     });
     BeatSaberUI::CreateStringSetting(container -> get_transform(), StringW(getMainConfig().aText.GetName()), StringW(getMainConfig().aText.GetValue()), [](std::string atext) {
       getMainConfig().aText.SetValue(atext);
 
     });
+    text4 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "Message speecil#5350 on discord if there are any issues");
+    text4 -> set_alignment(TMPro::TextAlignmentOptions::Center);
+    text5 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "Have Fun!");
+    text5 -> set_alignment(TMPro::TextAlignmentOptions::Center);
+    text5 -> set_color(Color::get_blue());
   }
 }
 // allows for the results banner and text to be changed
-static void setResultUI(UnityEngine::GameObject * clearedBannerGo) {
+static void setGoodResultUI(UnityEngine::GameObject * clearedBannerGo) {
 
   clearedBannerGo -> GetComponentsInChildren < TextMeshProUGUI * > ()[0] -> set_text(il2cpp_utils::newcsstr(getMainConfig().rText.GetValue()));
   clearedBannerGo -> GetComponentsInChildren < HMUI::ImageView * > ()[0] -> set_color(getMainConfig().rBackColour.GetValue());
 
 }
+static void setBadResultUI(UnityEngine::GameObject * failedBannerGo) {
+
+  failedBannerGo -> GetComponentsInChildren < TextMeshProUGUI * > ()[0] -> set_text(il2cpp_utils::newcsstr(getMainConfig().rfText.GetValue()));
+  failedBannerGo -> GetComponentsInChildren < HMUI::ImageView * > ()[0] -> set_color(getMainConfig().rfBackColour.GetValue());
+
+}
 // allows for the play button text to be changed
 static void setActionButton(UnityEngine::UI::Button * actionButton) {
 
-  actionButton->GetComponentsInChildren<TextMeshProUGUI*>()[0]->set_text(il2cpp_utils::newcsstr(getMainConfig().aText.GetValue()));
+  actionButton->get_transform()->GetComponentInChildren<TMPro::TextMeshProUGUI*>()->SetText(il2cpp_utils::newcsstr(getMainConfig().aText.GetValue()));
 
 }
 // grabs the play button and if the mod is enabled, it then checks if the user wants the play button to exist, then changes the text of the play button to what the user wants
@@ -102,25 +109,23 @@ MAKE_HOOK_MATCH(LevelUIHook, & GlobalNamespace::StandardLevelDetailView::Refresh
   self) {
 
   LevelUIHook(self);
-
-  if (getMainConfig().isEnabled.GetValue()) {
-    if(!getMainConfig().EnablePlayButton.GetValue()){
-      UnityEngine::UI::Button * playMenuButton = self -> dyn__actionButton();
-      UnityEngine::GameObject * play = playMenuButton -> get_gameObject();
+  UnityEngine::UI::Button * playMenuButton = self -> dyn__actionButton();
+  UnityEngine::GameObject * play = playMenuButton -> get_gameObject();
+  if(!getMainConfig().EnablePlayButton.GetValue()){
       play -> SetActive(false);
-    }
-    else {}
-    setActionButton(self -> actionButton);
-  } else {}
-
-}
+  }
+  else{
+  play -> SetActive(true);
+  setActionButton(self -> actionButton);
+    
+}}
 
 MAKE_HOOK_MATCH(ResultsView, & ResultsViewController::SetDataToUI, void, ResultsViewController * self) {
   ResultsView(self);
 
-  if (getMainConfig().isEnabled.GetValue()) {
-    setResultUI(self -> clearedBannerGo);
-  }
+  setGoodResultUI(self -> clearedBannerGo);
+  setBadResultUI(self -> failedBannerGo);
+
 }
 
 // Called at the early stages of game loading
