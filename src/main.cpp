@@ -57,6 +57,7 @@ void DidActivate(HMUI::ViewController * self, bool firstActivation, bool addedTo
     TMPro::TextMeshProUGUI * text5;
     TMPro::TextMeshProUGUI * text6;
     TMPro::TextMeshProUGUI * space1;
+    TMPro::TextMeshProUGUI * space2;
     // Creates a keyboard and sets the input to pauseText
     text2 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "Results Screen Editor");
     text2 -> set_alignment(TMPro::TextAlignmentOptions::Center);
@@ -67,6 +68,7 @@ void DidActivate(HMUI::ViewController * self, bool firstActivation, bool addedTo
     auto rBackColorPicker = BeatSaberUI::CreateColorPicker(container -> get_transform(), "Pass Result Background Colour", getMainConfig().rBackColour.GetValue(), [](UnityEngine::Color color) {
       getMainConfig().rBackColour.SetValue(color, true);
     });
+    space1 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "");
     text6 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "If you fail a level...");
     BeatSaberUI::CreateStringSetting(container -> get_transform(), StringW(getMainConfig().rfText.GetName()), StringW(getMainConfig().rfText.GetValue()), [](std::string rftext) {
       getMainConfig().rfText.SetValue(rftext);
@@ -75,7 +77,7 @@ void DidActivate(HMUI::ViewController * self, bool firstActivation, bool addedTo
       getMainConfig().rfBackColour.SetValue(color, true);
     });
     QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "_______________________________________________");
-    text3 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "Play Button Editor");
+    text3 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "Play and Practice Button Editor");
     text3 -> set_alignment(TMPro::TextAlignmentOptions::Center);
     CreateToggle(container -> get_transform(), "Enable the play button", getMainConfig().EnablePlayButton.GetValue(), [](bool value) {
       getMainConfig().EnablePlayButton.SetValue(value);
@@ -84,6 +86,16 @@ void DidActivate(HMUI::ViewController * self, bool firstActivation, bool addedTo
     });
     BeatSaberUI::CreateStringSetting(container -> get_transform(), StringW(getMainConfig().aText.GetName()), StringW(getMainConfig().aText.GetValue()), [](std::string atext) {
       getMainConfig().aText.SetValue(atext);
+
+    });
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    CreateToggle(container -> get_transform(), "Enable the practice button", getMainConfig().EnablePracticeButton.GetValue(), [](bool value) {
+      getMainConfig().EnablePracticeButton.SetValue(value);
+      getLogger().info("Toggled play button");
+
+    });
+    BeatSaberUI::CreateStringSetting(container -> get_transform(), StringW(getMainConfig().pText.GetName()), StringW(getMainConfig().pText.GetValue()), [](std::string ptext) {
+      getMainConfig().pText.SetValue(ptext);
 
     });
     text4 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "Message speecil#5350 on discord if there are any issues");
@@ -112,6 +124,11 @@ static void setActionButton(UnityEngine::UI::Button * actionButton) {
   actionButton->get_transform()->GetComponentInChildren<TMPro::TextMeshProUGUI*>()->SetText(il2cpp_utils::newcsstr(getMainConfig().aText.GetValue()));
 
 }
+static void setPracticeButton(UnityEngine::UI::Button * practiceButton) {
+
+  practiceButton->get_transform()->GetComponentInChildren<TMPro::TextMeshProUGUI*>()->SetText(il2cpp_utils::newcsstr(getMainConfig().pText.GetValue()));
+
+}
 // grabs the play button and if the mod is enabled, it then checks if the user wants the play button to exist, then changes the text of the play button to what the user wants
 MAKE_HOOK_MATCH(LevelUIHook, & GlobalNamespace::StandardLevelDetailView::RefreshContent, void, GlobalNamespace::StandardLevelDetailView *
   self) {
@@ -119,12 +136,22 @@ MAKE_HOOK_MATCH(LevelUIHook, & GlobalNamespace::StandardLevelDetailView::Refresh
   LevelUIHook(self);
   UnityEngine::UI::Button * playMenuButton = self -> dyn__actionButton();
   UnityEngine::GameObject * play = playMenuButton -> get_gameObject();
+  UnityEngine::UI::Button * practiceMenuButton = self -> dyn__practiceButton();
+  UnityEngine::GameObject * practice = practiceMenuButton -> get_gameObject();
   if(!getMainConfig().EnablePlayButton.GetValue()){
       play -> SetActive(false);
   }
   else{
-  play -> SetActive(true);
-  setActionButton(self -> actionButton);
+    play -> SetActive(true);
+    setActionButton(self -> actionButton);
+  }
+  if(!getMainConfig().EnablePracticeButton.GetValue()){
+      practice -> SetActive(false);
+  }
+  else{
+    practice -> SetActive(true);
+    setPracticeButton(self -> practiceButton);
+
     
 }}
 
