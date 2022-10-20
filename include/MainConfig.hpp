@@ -14,6 +14,7 @@ DECLARE_CONFIG(MainConfig,
 
     CONFIG_INIT_FUNCTION(
         CONFIG_INIT_VALUE(rText);
+        CONFIG_INIT_VALUE(rfText);
         CONFIG_INIT_VALUE(rfBackColour);
         CONFIG_INIT_VALUE(rBackColour);
         CONFIG_INIT_VALUE(aText);

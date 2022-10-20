@@ -56,15 +56,23 @@ void DidActivate(HMUI::ViewController * self, bool firstActivation, bool addedTo
     TMPro::TextMeshProUGUI * text4;
     TMPro::TextMeshProUGUI * text5;
     TMPro::TextMeshProUGUI * text6;
+    TMPro::TextMeshProUGUI * space1;
     // Creates a keyboard and sets the input to pauseText
     text2 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "Results Screen Editor");
     text2 -> set_alignment(TMPro::TextAlignmentOptions::Center);
-    text1 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "Pass Result");
+    text1 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "If you pass a level...");
     BeatSaberUI::CreateStringSetting(container -> get_transform(), StringW(getMainConfig().rText.GetName()), StringW(getMainConfig().rText.GetValue()), [](std::string rtext) {
       getMainConfig().rText.SetValue(rtext);
     });
     auto rBackColorPicker = BeatSaberUI::CreateColorPicker(container -> get_transform(), "Pass Result Background Colour", getMainConfig().rBackColour.GetValue(), [](UnityEngine::Color color) {
       getMainConfig().rBackColour.SetValue(color, true);
+    });
+    text6 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "If you fail a level...");
+    BeatSaberUI::CreateStringSetting(container -> get_transform(), StringW(getMainConfig().rfText.GetName()), StringW(getMainConfig().rfText.GetValue()), [](std::string rftext) {
+      getMainConfig().rfText.SetValue(rftext);
+    });
+    auto rfBackColorPicker = BeatSaberUI::CreateColorPicker(container -> get_transform(), "Fail Result Background Colour", getMainConfig().rfBackColour.GetValue(), [](UnityEngine::Color color) {
+      getMainConfig().rfBackColour.SetValue(color, true);
     });
     QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "_______________________________________________");
     text3 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "Play Button Editor");
