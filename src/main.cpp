@@ -140,17 +140,23 @@ MAKE_HOOK_MATCH(LevelUIHook, & GlobalNamespace::StandardLevelDetailView::Refresh
   UnityEngine::GameObject * practice = practiceMenuButton -> get_gameObject();
   if(!getMainConfig().EnablePlayButton.GetValue()){
       play -> SetActive(false);
+      getLogger().info("Disabled the play button");
   }
   else{
     play -> SetActive(true);
     setActionButton(self -> actionButton);
+    getLogger().info("Kept the play button enabled");
+    getLogger().info("Set Play button text!");
   }
   if(!getMainConfig().EnablePracticeButton.GetValue()){
       practice -> SetActive(false);
+      getLogger().info("Disabled the practice button");
   }
   else{
     practice -> SetActive(true);
     setPracticeButton(self -> practiceButton);
+    getLogger().info("Kept the practice button on");
+    getLogger().info("Set the practice button text");
 
     
 }}
@@ -160,6 +166,9 @@ MAKE_HOOK_MATCH(ResultsView, & ResultsViewController::SetDataToUI, void, Results
 
   setGoodResultUI(self -> clearedBannerGo);
   setBadResultUI(self -> failedBannerGo);
+  getLogger().info("Set the result screen colour");
+  getLogger().info("Set the result screen text");
+
 
 }
 
