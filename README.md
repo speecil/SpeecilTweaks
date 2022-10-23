@@ -11,8 +11,8 @@ Cool little tweaks I think are pretty neat
   - Change the colour of the result tab based on whether you passed or failed a level
   
 ### Miscellaneous Tweaks
-     -Change the main menu button's text colour
-     -Disable the bomb explosion effect
+  - Change the main menu button's text colour
+  - Disable the bomb explosion effect
 
 ### Coming Soon
   - Disable the bloqs within the main menu
