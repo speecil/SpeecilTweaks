@@ -2,6 +2,8 @@
 
 Cool little tweaks I think are pretty neat
 
+## Features
+
 ### Play and Practice Button Editor
   - Enable and disable each button (no need for NoPlay)
   - Change the text for each button (like PressJtoPlay but speecil)
@@ -9,10 +11,14 @@ Cool little tweaks I think are pretty neat
 ### Results Screen Editor
   - Change the result text based on whether you passed or failed a level
   - Change the colour of the result tab based on whether you passed or failed a level
+  
+### Miscellaneous Tweaks
+  - Change the main menu button's text colour
+  - Disable the bomb explosion effect
 
 ### Coming Soon
   - Disable the bloqs within the main menu
-  - Song Title adjustment when using Expand Cover Image
+  - Song Title adjustment when using Image Cover Expander
 
 ## Credits
 
