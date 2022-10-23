@@ -1,10 +1,12 @@
 # ninja log v5
-80	825	6882113436009957	CMakeFiles/SpeecilTweaks.dir/extern/includes/beatsaber-hook/src/inline-hook/And64InlineHook.cpp.o	1613610d4de76dfe
-47	12156	6882163277576264	CMakeFiles/SpeecilTweaks.dir/src/UI/ResultsEditorViewController.cpp.o	a74162b95d09bd25
-63	208	6882113429832229	CMakeFiles/SpeecilTweaks.dir/extern/includes/beatsaber-hook/src/inline-hook/inlineHook.c.o	5fe55d4e82fdde40
-71	12024	6882155528824705	CMakeFiles/SpeecilTweaks.dir/src/UI/SpeecilTweaksFlowCoordinator.cpp.o	ad7d3ac4f06ae5dd
-71	218	6882113429832229	CMakeFiles/SpeecilTweaks.dir/extern/includes/beatsaber-hook/src/inline-hook/relocate.c.o	a1926f21915fb89b
-80	16124	6882132609732205	CMakeFiles/SpeecilTweaks.dir/src/main.cpp.o	feef8d6671d0ec71
-48	13803	6882132586648459	CMakeFiles/SpeecilTweaks.dir/src/UI/MiscSettingsViewController.cpp.o	133041055fef74f8
-61	12021	6882155528824705	CMakeFiles/SpeecilTweaks.dir/src/UI/PlayPracticeViewController.cpp.o	293322cdf51e67bc
-12158	15976	6882163286678470	libSpeecilTweaks.so	3d88c08e19f442dd
+76	825	6882202355136397	CMakeFiles/SpeecilTweaks.dir/extern/includes/beatsaber-hook/src/inline-hook/And64InlineHook.cpp.o	1613610d4de76dfe
+37	13344	6882202479869220	CMakeFiles/SpeecilTweaks.dir/src/UI/ResultsEditorViewController.cpp.o	a74162b95d09bd25
+59	212	6882202348957354	CMakeFiles/SpeecilTweaks.dir/extern/includes/beatsaber-hook/src/inline-hook/inlineHook.c.o	5fe55d4e82fdde40
+44	12259	6882202468960673	CMakeFiles/SpeecilTweaks.dir/src/UI/SpeecilTweaksFlowCoordinator.cpp.o	ad7d3ac4f06ae5dd
+68	223	6882202349014281	CMakeFiles/SpeecilTweaks.dir/extern/includes/beatsaber-hook/src/inline-hook/relocate.c.o	a1926f21915fb89b
+51	13874	6882207680374445	CMakeFiles/SpeecilTweaks.dir/src/main.cpp.o	feef8d6671d0ec71
+21	12858	6882202475094545	CMakeFiles/SpeecilTweaks.dir/src/UI/MiscSettingsViewController.cpp.o	133041055fef74f8
+30	12269	6882202468990704	CMakeFiles/SpeecilTweaks.dir/src/UI/PlayPracticeViewController.cpp.o	293322cdf51e67bc
+13876	17510	6882207689620487	libSpeecilTweaks.so	3d88c08e19f442dd
+52	13934	6882208378185927	CMakeFiles/SpeecilTweaks.dir/src/main.cpp.o	feef8d6671d0ec71
+13935	17646	6882208387575799	libSpeecilTweaks.so	3d88c08e19f442dd

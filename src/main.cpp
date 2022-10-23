@@ -24,6 +24,7 @@
 #include "UnityEngine/GameObject.hpp"
 #include "HMUI/CurvedTextMeshPro.hpp"
 #include "GlobalNamespace/BombExplosionEffect.hpp"
+#include "GlobalNamespace/PracticeViewController.hpp"
 
 #include "include/UI/SpeecilTweaksFlowCoordinator.hpp"
 #include "include/UI/PlayPracticeViewController.hpp"
@@ -91,7 +92,11 @@ static void setPracticeButton(UnityEngine::UI::Button * practiceButton) {
 
 }
 
+static void setPracticePlayButton(UnityEngine::UI::Button * practicePlayButton) {
 
+  practicePlayButton->get_transform()->GetComponentInChildren<TMPro::TextMeshProUGUI*>()->SetText(il2cpp_utils::newcsstr(getMainConfig().aText.GetValue()));
+
+}
 
 MAKE_HOOK_MATCH(MainMenuUIHook, &GlobalNamespace::MainMenuViewController::DidActivate, void, GlobalNamespace::MainMenuViewController
 *self, bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling) {
@@ -122,6 +127,8 @@ MAKE_HOOK_MATCH(MainMenuUIHook, &GlobalNamespace::MainMenuViewController::DidAct
     campaignMenuText->set_color(getMainConfig().MenuButtonColour.GetValue());
     partyMenuText->set_color(getMainConfig().MenuButtonColour.GetValue());
 }
+
+
 
 // grabs the play button and if the mod is enabled, it then checks if the user wants the play button to exist, then changes the text of the play button to what the user wants
 MAKE_HOOK_MATCH(LevelUIHook, & GlobalNamespace::StandardLevelDetailView::RefreshContent, void, GlobalNamespace::StandardLevelDetailView *
@@ -160,6 +167,13 @@ MAKE_HOOK_MATCH(LevelUIHook, & GlobalNamespace::StandardLevelDetailView::Refresh
 
     
 }}
+
+MAKE_HOOK_MATCH(PracLevelUIHook, & GlobalNamespace::PracticeViewController::RefreshUI, void, GlobalNamespace::PracticeViewController *
+  self) {
+
+  PracLevelUIHook(self);
+  setPracticePlayButton(self->playButton);
+  }
 
 MAKE_HOOK_MATCH(ResultsView, & ResultsViewController::SetDataToUI, void, ResultsViewController * self) {
   ResultsView(self);
@@ -213,5 +227,6 @@ void load() {
   INSTALL_HOOK(getLogger(), MainMenuUIHook);
   INSTALL_HOOK(getLogger(), multiCheck);
   INSTALL_HOOK(getLogger(), BombHook);
+  INSTALL_HOOK(getLogger(), PracLevelUIHook);
   getLogger().info("Installed all hooks!");
 }
