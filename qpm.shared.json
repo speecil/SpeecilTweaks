@@ -50,6 +50,11 @@
         "id": "config-utils",
         "versionRange": "^0.8.0",
         "additionalData": {}
+      },
+      {
+        "id": "libil2cpp",
+        "versionRange": "^0.2.3",
+        "additionalData": {}
       }
     ],
     "additionalData": {}
@@ -57,29 +62,27 @@
   "restoredDependencies": [
     {
       "dependency": {
-        "id": "bs-utils",
-        "versionRange": "^0.7.1",
+        "id": "libil2cpp",
+        "versionRange": "^0.2.3",
         "additionalData": {
-          "soLink": "https://github.com/sc2ad/QuestBS-Utils/releases/download/v0.7.1/libbs-utils.so",
-          "debugSoLink": "https://github.com/sc2ad/QuestBS-Utils/releases/download/v0.7.1/debug_libbs-utils.so",
-          "overrideSoName": "libbs-utils.so",
-          "modLink": "https://github.com/sc2ad/QuestBS-Utils/releases/download/v0.7.1/BS-Utils.qmod",
-          "branchName": "version-v0.7.1"
+          "headersOnly": true
         }
       },
-      "version": "0.7.1"
+      "version": "0.2.3"
     },
     {
       "dependency": {
-        "id": "modloader",
-        "versionRange": "^1.2.3",
+        "id": "bs-utils",
+        "versionRange": "^0.7.1",
         "additionalData": {
-          "soLink": "https://github.com/sc2ad/QuestLoader/releases/download/v1.2.3/libmodloader64.so",
-          "overrideSoName": "libmodloader.so",
-          "branchName": "version-v1.2.3"
+          "soLink": "https://github.com/sc2ad/QuestBS-Utils/releases/download/v0.7.2/libbs-utils.so",
+          "debugSoLink": "https://github.com/sc2ad/QuestBS-Utils/releases/download/v0.7.2/debug_libbs-utils.so",
+          "overrideSoName": "libbs-utils.so",
+          "modLink": "https://github.com/sc2ad/QuestBS-Utils/releases/download/v0.7.2/BS-Utils.qmod",
+          "branchName": "version-v0.7.2"
         }
       },
-      "version": "1.2.3"
+      "version": "0.7.2"
     },
     {
       "dependency": {
@@ -111,13 +114,15 @@
     },
     {
       "dependency": {
-        "id": "libil2cpp",
-        "versionRange": "^0.2.3",
+        "id": "modloader",
+        "versionRange": "^1.2.3",
         "additionalData": {
-          "headersOnly": true
+          "soLink": "https://github.com/sc2ad/QuestLoader/releases/download/v1.2.3/libmodloader64.so",
+          "overrideSoName": "libmodloader.so",
+          "branchName": "version-v1.2.3"
         }
       },
-      "version": "0.2.3"
+      "version": "1.2.3"
     },
     {
       "dependency": {
@@ -149,11 +154,11 @@
         "id": "questui",
         "versionRange": "^0.17.3",
         "additionalData": {
-          "soLink": "https://github.com/darknight1050/QuestUI/releases/download/v0.17.4/libquestui.so",
-          "debugSoLink": "https://github.com/darknight1050/QuestUI/releases/download/v0.17.4/debug_libquestui.so",
+          "soLink": "https://github.com/darknight1050/QuestUI/releases/download/v0.17.5/libquestui.so",
+          "debugSoLink": "https://github.com/darknight1050/QuestUI/releases/download/v0.17.5/debug_libquestui.so",
           "overrideSoName": "libquestui.so",
-          "modLink": "https://github.com/darknight1050/QuestUI/releases/download/v0.17.4/QuestUI.qmod",
-          "branchName": "version-v0.17.4",
+          "modLink": "https://github.com/darknight1050/QuestUI/releases/download/v0.17.5/QuestUI.qmod",
+          "branchName": "version-v0.17.5",
           "compileOptions": {
             "systemIncludes": [
               "shared/cppcodec"
@@ -161,7 +166,7 @@
           }
         }
       },
-      "version": "0.17.4"
+      "version": "0.17.5"
     }
   ]
 }

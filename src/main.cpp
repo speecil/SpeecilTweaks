@@ -19,6 +19,20 @@
 #include "UnityEngine/GameObject.hpp"
 
 #include "UnityEngine/Transform.hpp"
+#include "GlobalNamespace/MainMenuViewController.hpp"
+#include "UnityEngine/UI/Button.hpp"
+#include "UnityEngine/GameObject.hpp"
+#include "HMUI/CurvedTextMeshPro.hpp"
+#include "GlobalNamespace/BombExplosionEffect.hpp"
+
+#include "include/UI/SpeecilTweaksFlowCoordinator.hpp"
+#include "include/UI/PlayPracticeViewController.hpp"
+#include "include/UI/ResultsEditorViewController.hpp"
+#include "GlobalNamespace/LobbySetupViewController.hpp"
+
+#include "GlobalNamespace/PlayerHeightSettingsController.hpp"
+#include "System/Math.hpp"
+
 
 using namespace GlobalNamespace;
 using namespace UnityEngine;
@@ -43,68 +57,15 @@ Logger & getLogger() {
   static Logger * logger = new Logger(modInfo);
   return *logger;
 }
-// Creates a settings menu
-void DidActivate(HMUI::ViewController * self, bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling) {
-  if (firstActivation) {
-    // creates the container for the mod settings
-    UnityEngine::GameObject * container = QuestUI::BeatSaberUI::CreateScrollableSettingsContainer(self -> get_transform());
-    getLogger().info("created settings menu");
-    TMPro::TextMeshProUGUI * text;
-    TMPro::TextMeshProUGUI * text1;
-    TMPro::TextMeshProUGUI * text2;
-    TMPro::TextMeshProUGUI * text3;
-    TMPro::TextMeshProUGUI * text4;
-    TMPro::TextMeshProUGUI * text5;
-    TMPro::TextMeshProUGUI * text6;
-    TMPro::TextMeshProUGUI * space1;
-    TMPro::TextMeshProUGUI * space2;
-    // Creates a keyboard and sets the input to pauseText
-    text2 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "Results Screen Editor");
-    text2 -> set_alignment(TMPro::TextAlignmentOptions::Center);
-    text1 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "If you pass a level...");
-    BeatSaberUI::CreateStringSetting(container -> get_transform(), StringW(getMainConfig().rText.GetName()), StringW(getMainConfig().rText.GetValue()), [](std::string rtext) {
-      getMainConfig().rText.SetValue(rtext);
-    });
-    auto rBackColorPicker = BeatSaberUI::CreateColorPicker(container -> get_transform(), "Pass Result Background Colour", getMainConfig().rBackColour.GetValue(), [](UnityEngine::Color color) {
-      getMainConfig().rBackColour.SetValue(color, true);
-    });
-    space1 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "");
-    text6 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "If you fail a level...");
-    BeatSaberUI::CreateStringSetting(container -> get_transform(), StringW(getMainConfig().rfText.GetName()), StringW(getMainConfig().rfText.GetValue()), [](std::string rftext) {
-      getMainConfig().rfText.SetValue(rftext);
-    });
-    auto rfBackColorPicker = BeatSaberUI::CreateColorPicker(container -> get_transform(), "Fail Result Background Colour", getMainConfig().rfBackColour.GetValue(), [](UnityEngine::Color color) {
-      getMainConfig().rfBackColour.SetValue(color, true);
-    });
-    QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "_______________________________________________");
-    text3 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "Play and Practice Button Editor");
-    text3 -> set_alignment(TMPro::TextAlignmentOptions::Center);
-    CreateToggle(container -> get_transform(), "Enable the play button", getMainConfig().EnablePlayButton.GetValue(), [](bool value) {
-      getMainConfig().EnablePlayButton.SetValue(value);
-      getLogger().info("Toggled play button");
 
-    });
-    BeatSaberUI::CreateStringSetting(container -> get_transform(), StringW(getMainConfig().aText.GetName()), StringW(getMainConfig().aText.GetValue()), [](std::string atext) {
-      getMainConfig().aText.SetValue(atext);
-
-    });
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    CreateToggle(container -> get_transform(), "Enable the practice button", getMainConfig().EnablePracticeButton.GetValue(), [](bool value) {
-      getMainConfig().EnablePracticeButton.SetValue(value);
-      getLogger().info("Toggled play button");
-
-    });
-    BeatSaberUI::CreateStringSetting(container -> get_transform(), StringW(getMainConfig().pText.GetName()), StringW(getMainConfig().pText.GetValue()), [](std::string ptext) {
-      getMainConfig().pText.SetValue(ptext);
-
-    });
-    text4 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "Message speecil#5350 on discord if there are any issues");
-    text4 -> set_alignment(TMPro::TextAlignmentOptions::Center);
-    text5 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "Have Fun!");
-    text5 -> set_alignment(TMPro::TextAlignmentOptions::Center);
-    text5 -> set_color(Color::get_blue());
-  }
+bool inMulti;
+MAKE_HOOK_MATCH(multiCheck, &LobbySetupViewController::DidActivate, void, LobbySetupViewController *self, bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling)
+{
+    multiCheck(self, firstActivation, addedToHierarchy, screenSystemEnabling);
+    inMulti = true;
+    getLogger().info("User connected to multiplayer, not allowing user to alter the active state of the play button");
 }
+
 // allows for the results banner and text to be changed
 static void setGoodResultUI(UnityEngine::GameObject * clearedBannerGo) {
 
@@ -129,16 +90,52 @@ static void setPracticeButton(UnityEngine::UI::Button * practiceButton) {
   practiceButton->get_transform()->GetComponentInChildren<TMPro::TextMeshProUGUI*>()->SetText(il2cpp_utils::newcsstr(getMainConfig().pText.GetValue()));
 
 }
+
+
+
+MAKE_HOOK_MATCH(MainMenuUIHook, &GlobalNamespace::MainMenuViewController::DidActivate, void, GlobalNamespace::MainMenuViewController
+*self, bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling) {
+    inMulti = false;
+    getLogger().info("User left Multiplayer, taking control over the play buttons active status.");
+
+    MainMenuUIHook(self, firstActivation, addedToHierarchy, screenSystemEnabling); 
+
+    UnityEngine::UI::Button *soloMenuButton = self->soloButton;
+    UnityEngine::GameObject *gameObject = soloMenuButton->get_gameObject();
+    HMUI::CurvedTextMeshPro *soloMenuText = gameObject->GetComponentInChildren<HMUI::CurvedTextMeshPro *>();
+    //
+    UnityEngine::UI::Button *onlineMenuButton = self->multiplayerButton;
+    UnityEngine::GameObject *gameObject1 = onlineMenuButton->get_gameObject();
+    HMUI::CurvedTextMeshPro *onlineMenuText = gameObject1->GetComponentInChildren<HMUI::CurvedTextMeshPro *>();
+    //
+    UnityEngine::UI::Button *campaignMenuButton = self->campaignButton;
+    UnityEngine::GameObject *gameObject2 = campaignMenuButton->get_gameObject();
+    HMUI::CurvedTextMeshPro *campaignMenuText = gameObject2->GetComponentInChildren<HMUI::CurvedTextMeshPro *>();
+    //
+    UnityEngine::UI::Button *partyMenuButton = self->partyButton;
+    UnityEngine::GameObject *gameObject3 = partyMenuButton->get_gameObject();
+    HMUI::CurvedTextMeshPro *partyMenuText = gameObject3->GetComponentInChildren<HMUI::CurvedTextMeshPro *>();
+    //
+
+    soloMenuText->set_color(getMainConfig().MenuButtonColour.GetValue());
+    onlineMenuText->set_color(getMainConfig().MenuButtonColour.GetValue());
+    campaignMenuText->set_color(getMainConfig().MenuButtonColour.GetValue());
+    partyMenuText->set_color(getMainConfig().MenuButtonColour.GetValue());
+}
+
 // grabs the play button and if the mod is enabled, it then checks if the user wants the play button to exist, then changes the text of the play button to what the user wants
 MAKE_HOOK_MATCH(LevelUIHook, & GlobalNamespace::StandardLevelDetailView::RefreshContent, void, GlobalNamespace::StandardLevelDetailView *
   self) {
 
   LevelUIHook(self);
-  UnityEngine::UI::Button * playMenuButton = self -> dyn__actionButton();
+  UnityEngine::UI::Button * playMenuButton = self -> actionButton;
   UnityEngine::GameObject * play = playMenuButton -> get_gameObject();
-  UnityEngine::UI::Button * practiceMenuButton = self -> dyn__practiceButton();
+  UnityEngine::UI::Button * practiceMenuButton = self -> practiceButton;
   UnityEngine::GameObject * practice = practiceMenuButton -> get_gameObject();
-  if(!getMainConfig().EnablePlayButton.GetValue()){
+  if(inMulti){
+
+  }
+  else if(!getMainConfig().EnablePlayButton.GetValue()){
       play -> SetActive(false);
       getLogger().info("Disabled the play button");
   }
@@ -148,7 +145,10 @@ MAKE_HOOK_MATCH(LevelUIHook, & GlobalNamespace::StandardLevelDetailView::Refresh
     getLogger().info("Kept the play button enabled");
     getLogger().info("Set Play button text!");
   }
-  if(!getMainConfig().EnablePracticeButton.GetValue()){
+  if(inMulti){
+
+  }
+  else if(!getMainConfig().EnablePracticeButton.GetValue()){
       practice -> SetActive(false);
       getLogger().info("Disabled the practice button");
   }
@@ -156,7 +156,7 @@ MAKE_HOOK_MATCH(LevelUIHook, & GlobalNamespace::StandardLevelDetailView::Refresh
     practice -> SetActive(true);
     setPracticeButton(self -> practiceButton);
     getLogger().info("Kept the practice button on");
-    getLogger().info("Set the practice button text");
+    
 
     
 }}
@@ -172,6 +172,20 @@ MAKE_HOOK_MATCH(ResultsView, & ResultsViewController::SetDataToUI, void, Results
 
 }
 
+MAKE_HOOK_MATCH(BombHook, &GlobalNamespace::BombExplosionEffect::SpawnExplosion, void, GlobalNamespace::BombExplosionEffect* self, UnityEngine::Vector3 pos) {
+
+    BombHook(self, pos);
+  UnityEngine::ParticleSystem* bDebris = self->debrisPS;
+  UnityEngine::GameObject * BombDebris = bDebris -> get_gameObject();
+  UnityEngine::ParticleSystem* bExplosion = self->explosionPS;
+  UnityEngine::GameObject * BombExplosion = bExplosion -> get_gameObject();
+
+  if(getMainConfig().DisableBombDebris.GetValue()){
+  BombDebris->SetActive(false);
+  BombExplosion->SetActive(false);
+  }
+  else{}
+}
 // Called at the early stages of game loading
 extern "C"
 void setup(ModInfo & info) {
@@ -189,11 +203,15 @@ void load() {
   il2cpp_functions::Init();
   getMainConfig().Init(modInfo);
   // Initialises Quest UI
+  custom_types::Register::AutoRegister();
   QuestUI::Init();
-  QuestUI::Register::RegisterModSettingsViewController(modInfo, DidActivate);
-  QuestUI::Register::RegisterMainMenuModSettingsViewController(modInfo, DidActivate);
+  QuestUI::Register::RegisterMainMenuModSettingsFlowCoordinator<SpeecilTweaks::UI::SpeecilTweaksFlowCoordinator*>(modInfo);
+  //QuestUI::Register::RegisterMainMenuModSettingsFlowCoordinator<CustomMissText::UI::FlowCoordinators::CustomMissTextFlowCoordinator*>(modInfo);
   getLogger().info("Installing hooks...");
   INSTALL_HOOK(getLogger(), ResultsView);
   INSTALL_HOOK(getLogger(), LevelUIHook);
+  INSTALL_HOOK(getLogger(), MainMenuUIHook);
+  INSTALL_HOOK(getLogger(), multiCheck);
+  INSTALL_HOOK(getLogger(), BombHook);
   getLogger().info("Installed all hooks!");
 }

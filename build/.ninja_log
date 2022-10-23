@@ -1,6 +1,10 @@
 # ninja log v5
-19	308	6879621336066555	CMakeFiles/SpeecilTweaks.dir/extern/includes/beatsaber-hook/src/inline-hook/And64InlineHook.cpp.o	1613610d4de76dfe
-12	77	6879621333729172	CMakeFiles/SpeecilTweaks.dir/extern/includes/beatsaber-hook/src/inline-hook/inlineHook.c.o	5fe55d4e82fdde40
-16	82	6879621333742711	CMakeFiles/SpeecilTweaks.dir/extern/includes/beatsaber-hook/src/inline-hook/relocate.c.o	a1926f21915fb89b
-24	6643	6879660672490945	CMakeFiles/SpeecilTweaks.dir/src/main.cpp.o	feef8d6671d0ec71
-6646	8464	6879660677042987	libSpeecilTweaks.so	3b6a748f3f88c36a
+80	825	6882113436009957	CMakeFiles/SpeecilTweaks.dir/extern/includes/beatsaber-hook/src/inline-hook/And64InlineHook.cpp.o	1613610d4de76dfe
+47	12156	6882163277576264	CMakeFiles/SpeecilTweaks.dir/src/UI/ResultsEditorViewController.cpp.o	a74162b95d09bd25
+63	208	6882113429832229	CMakeFiles/SpeecilTweaks.dir/extern/includes/beatsaber-hook/src/inline-hook/inlineHook.c.o	5fe55d4e82fdde40
+71	12024	6882155528824705	CMakeFiles/SpeecilTweaks.dir/src/UI/SpeecilTweaksFlowCoordinator.cpp.o	ad7d3ac4f06ae5dd
+71	218	6882113429832229	CMakeFiles/SpeecilTweaks.dir/extern/includes/beatsaber-hook/src/inline-hook/relocate.c.o	a1926f21915fb89b
+80	16124	6882132609732205	CMakeFiles/SpeecilTweaks.dir/src/main.cpp.o	feef8d6671d0ec71
+48	13803	6882132586648459	CMakeFiles/SpeecilTweaks.dir/src/UI/MiscSettingsViewController.cpp.o	133041055fef74f8
+61	12021	6882155528824705	CMakeFiles/SpeecilTweaks.dir/src/UI/PlayPracticeViewController.cpp.o	293322cdf51e67bc
+12158	15976	6882163286678470	libSpeecilTweaks.so	3d88c08e19f442dd

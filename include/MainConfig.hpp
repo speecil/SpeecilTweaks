@@ -11,6 +11,8 @@ DECLARE_CONFIG(MainConfig,
     CONFIG_VALUE(aText, std::string, "Play Button Text", "Speecil!");
     CONFIG_VALUE(EnablePracticeButton, bool, "Enable the Practice Button", true);
     CONFIG_VALUE(pText, std::string, "Practice Button Text", "Git Gud");
+    CONFIG_VALUE(MenuButtonColour, UnityEngine::Color, "Menu Button Colour", UnityEngine::Color(0, 1.0, 1.0, 1.0));
+    CONFIG_VALUE(DisableBombDebris, bool, "Disable Bomb Debris?", true);
 
 
 
@@ -23,5 +25,8 @@ DECLARE_CONFIG(MainConfig,
         CONFIG_INIT_VALUE(EnablePlayButton);
         CONFIG_INIT_VALUE(pText);
         CONFIG_INIT_VALUE(EnablePracticeButton);
+        CONFIG_INIT_VALUE(MenuButtonColour);
+        CONFIG_INIT_VALUE(DisableBombDebris);
+
     )
 )
