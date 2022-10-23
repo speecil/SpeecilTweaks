@@ -2,6 +2,8 @@
 
 Cool little tweaks I think are pretty neat
 
+## Features
+
 ### Play and Practice Button Editor
   - Enable and disable each button (no need for NoPlay)
   - Change the text for each button (like PressJtoPlay but speecil)
