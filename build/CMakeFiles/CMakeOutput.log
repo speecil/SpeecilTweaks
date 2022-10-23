@@ -276,3 +276,5 @@ Parsed CXX implicit link information from above output:
   implicit fwks: []
 
 
+The target system is: Android - 24 - aarch64
+The host system is: Windows - 10.0.19044 - AMD64
