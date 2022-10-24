@@ -68,3 +68,5 @@ extern.cmake
 mod.json.schema
 *.qmod
 *.txt
+*.qmod
+Speecil Tweaks.qmod
