@@ -70,3 +70,4 @@ mod.json.schema
 *.txt
 *.qmod
 Speecil Tweaks.qmod
+*.qmod

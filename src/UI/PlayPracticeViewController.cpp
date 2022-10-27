@@ -33,14 +33,8 @@ void SpeecilTweaks::UI::PlayPracticeViewController::DidActivate(bool firstActiva
     space1 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "");
     AddConfigValueToggle(container->get_transform(), getMainConfig().EnablePlayButton);
     AddConfigValueStringSetting(container->get_transform(), getMainConfig().aText);
+    space2 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "");
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     AddConfigValueToggle(container->get_transform(), getMainConfig().EnablePracticeButton);
     AddConfigValueStringSetting(container->get_transform(), getMainConfig().pText);
-
-    text4 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "Message speecil#5350 on discord if there are any issues");
-    text4 -> set_alignment(TMPro::TextAlignmentOptions::Center);
-    text5 = QuestUI::BeatSaberUI::CreateText(container -> get_transform(), "Speecil Tweaks 0.2.0");
-    text5 -> set_alignment(TMPro::TextAlignmentOptions::Center);
-    text5 -> set_fontSize(5.0);
-    text5 -> set_color(UnityEngine::Color::get_green());
   }

@@ -6,6 +6,7 @@
 #include "UI/PlayPracticeViewController.hpp"
 #include "UI/ResultsEditorViewController.hpp"
 #include "UI/MiscSettingsViewController.hpp"
+#include "UI/CreditsViewController.hpp"
 
 #include "custom-types/shared/macros.hpp"
 
@@ -15,6 +16,8 @@ DECLARE_CLASS_CODEGEN(SpeecilTweaks::UI, SpeecilTweaksFlowCoordinator, HMUI::Flo
                       DECLARE_INSTANCE_FIELD(SpeecilTweaks::UI::ResultsEditorViewController*, ResultsEditorViewController);
                       DECLARE_INSTANCE_FIELD(SpeecilTweaks::UI::PlayPracticeViewController*, PlayPracticeViewController);
                       DECLARE_INSTANCE_FIELD(SpeecilTweaks::UI::MiscSettingsViewController*, MiscSettingsViewController);
+                      DECLARE_INSTANCE_FIELD(SpeecilTweaks::UI::CreditsViewController*, CreditsViewController);
+                      //fortnite
 
                       DECLARE_INSTANCE_METHOD(void, Awake);
 

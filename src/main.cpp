@@ -193,6 +193,7 @@ MAKE_HOOK_MATCH(BombHook, &GlobalNamespace::BombExplosionEffect::SpawnExplosion,
   }
   else{}
 }
+
 // Called at the early stages of game loading
 extern "C"
 void setup(ModInfo & info) {
