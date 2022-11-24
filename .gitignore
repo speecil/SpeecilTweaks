@@ -71,3 +71,7 @@ mod.json.schema
 *.qmod
 Speecil Tweaks.qmod
 *.qmod
+*.ipch
+*.bin
+*.qmod
+*.qmod

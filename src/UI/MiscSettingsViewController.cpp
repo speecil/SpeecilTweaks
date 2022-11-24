@@ -25,6 +25,8 @@ void SpeecilTweaks::UI::MiscSettingsViewController::DidActivate(bool firstActiva
       getMainConfig().MenuButtonColour.SetValue(color, true);
     });
     AddConfigValueToggle(layout->get_transform(), getMainConfig().DisableBombDebris);
+    AddConfigValueToggle(layout->get_transform(), getMainConfig().EnablePMenuTweaks);
+    AddConfigValueColorPicker(layout->get_transform(), getMainConfig().PMenuColour);
     text = QuestUI::BeatSaberUI::CreateText(layout -> get_transform(), "More Features coming soon!");
     text -> set_fontSize(7.0);
     text -> set_alignment(TMPro::TextAlignmentOptions::Center);

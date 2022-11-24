@@ -3,7 +3,7 @@
 #include "MainConfig.hpp"
 
 #include "extern/includes/bs-utils/shared/utils.hpp"
-
+#include "GlobalNamespace/LevelBar.hpp"
 #include "questui/shared/QuestUI.hpp"
 
 #include "GlobalNamespace/ResultsViewController.hpp"
@@ -33,6 +33,8 @@
 
 #include "GlobalNamespace/PlayerHeightSettingsController.hpp"
 #include "System/Math.hpp"
+
+#include "GlobalNamespace/PauseMenuManager.hpp"
 
 
 using namespace GlobalNamespace;
@@ -194,6 +196,17 @@ MAKE_HOOK_MATCH(BombHook, &GlobalNamespace::BombExplosionEffect::SpawnExplosion,
   else{}
 }
 
+MAKE_HOOK_MATCH(PauseMenu, &PauseMenuManager::ShowMenu, void, PauseMenuManager* self) {
+    PauseMenu(self);
+    if(getMainConfig().EnablePMenuTweaks.GetValue()){
+      self->levelBar->authorNameText->get_gameObject()->SetActive(false);
+      self->levelBar->difficultyText->get_gameObject()->SetActive(false);
+      self->levelBar->songNameText->set_fontSizeMax(1000);
+      self->levelBar->songNameText->set_fontSize(500);
+      self->levelBar->songNameText->set_color(getMainConfig().PMenuColour.GetValue());
+    }
+}
+
 // Called at the early stages of game loading
 extern "C"
 void setup(ModInfo & info) {
@@ -221,5 +234,6 @@ void load() {
   INSTALL_HOOK(getLogger(), multiCheck);
   INSTALL_HOOK(getLogger(), BombHook);
   INSTALL_HOOK(getLogger(), PracLevelUIHook);
+  INSTALL_HOOK(getLogger(), PauseMenu);
   getLogger().info("Installed all hooks!");
 }

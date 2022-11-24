@@ -11,8 +11,12 @@
 using namespace SpeecilTweaks::UI;
 using namespace TMPro;
 using namespace QuestUI;
+using namespace UnityEngine;
+using namespace UnityEngine::UI;
 
 DEFINE_TYPE(SpeecilTweaks::UI, PlayPracticeViewController);
+
+
 
 void SpeecilTweaks::UI::PlayPracticeViewController::DidActivate(bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling) 
 {   if (!firstActivation) return;
@@ -37,4 +41,5 @@ void SpeecilTweaks::UI::PlayPracticeViewController::DidActivate(bool firstActiva
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     AddConfigValueToggle(container->get_transform(), getMainConfig().EnablePracticeButton);
     AddConfigValueStringSetting(container->get_transform(), getMainConfig().pText);
+
   }

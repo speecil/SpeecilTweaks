@@ -1,5 +1,5 @@
 #pragma once
-
+#include "UnityEngine/Color.hpp"
 #include "config-utils/shared/config-utils.hpp"
 
 DECLARE_CONFIG(MainConfig,
@@ -13,6 +13,8 @@ DECLARE_CONFIG(MainConfig,
     CONFIG_VALUE(pText, std::string, "Practice Button Text", "Git Gud");
     CONFIG_VALUE(MenuButtonColour, UnityEngine::Color, "Menu Button Colour", UnityEngine::Color(0, 1.0, 1.0, 1.0));
     CONFIG_VALUE(DisableBombDebris, bool, "Disable Bomb Debris?", true);
+    CONFIG_VALUE(EnablePMenuTweaks, bool, "Enable Pause Menu Tweaks?", true);
+    CONFIG_VALUE(PMenuColour, UnityEngine::Color, "Pause Song Name Colour", UnityEngine::Color(0.1, 0.3, 1.0, 1.0));
 
 
 
@@ -27,6 +29,8 @@ DECLARE_CONFIG(MainConfig,
         CONFIG_INIT_VALUE(EnablePracticeButton);
         CONFIG_INIT_VALUE(MenuButtonColour);
         CONFIG_INIT_VALUE(DisableBombDebris);
+        CONFIG_INIT_VALUE(EnablePMenuTweaks);
+        CONFIG_INIT_VALUE(PMenuColour);
 
     )
 )
