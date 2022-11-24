@@ -15,6 +15,9 @@ Cool little tweaks I think are pretty neat
 ### Miscellaneous Tweaks
   - Change the main menu button's text colour
   - Disable the bomb explosion effect
+  - Disable pause menu song artist text
+  - Change pause menu song title colour
+  - Increase pause menu song title size
 
 ### Coming Soon
   - Disable the bloqs within the main menu
